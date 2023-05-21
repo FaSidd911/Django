@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path 
+from django.urls import re_path
 from App1 import views 
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('', views.base),
+    path('', views.index),
+    path('login', views.login_request,name='login'),
     path('index', views.index),
-    path('login', views.login),
     path('about', views.about),
     path('contact', views.contact),
+    path("addSociety", views.addSociety),
+    path('society/<str:item_name>/',views.societyMembers, name='item'),
+    path('society/<str:item_name>/societyMembers',views.societyMembers, name='item'),
+    re_path(r"[^;]*logout", LogoutView.as_view(), name="logout")
 ]

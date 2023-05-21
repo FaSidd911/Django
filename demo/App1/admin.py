@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import SocietyList,MembersList
 
-# Register your models here.
+admin.site.register(SocietyList)
+admin.site.register(MembersList)

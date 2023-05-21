@@ -1,0 +1,52 @@
+{% extends "baseAfterLogin.html" %}
+{% block body %}
+    <div class="item-detail">
+        <h2> Member Details </h2>
+        <p>{{ item.societyName }}</p>
+    </div>
+
+    <div class="py-2 px-4"></div>
+    <table>
+        <tr>
+            <th>Member Name</th>
+            <th>Flat Name</th>
+            <th>Opening Balance</th>
+            <th>Previous Balance</th>
+        </tr>
+        {% for item in query_results %}
+        <tr> 
+            <td>{{ item.memberName }}</a></td>
+            <td>{{ item.flatno }}</td>
+            <td>{{ item.openingBalance }}</td>
+            <td>{{ item.closingBalance }}</td>
+      
+        </tr>
+        {% endfor %}
+      </table>
+
+</div>
+    <div class="py-2 px-4"></div>
+<form class="position-relative float-right px-4 w-10 p-3" method="POST" action="societyMembers">
+    {% csrf_token %}
+    <h1>Add New Member</h1>
+    <div>
+      <label for="memberName" class="form-label">Member Name: </label>
+      <input type="input" class="form-control h-25" name="memberName" aria-describedby="" required="True">
+    </div>
+    <div class="mb-3">
+      <label for="flatno" class="form-label">Flat No</label>
+      <input type="input" class="form-control h-25" name="flatno" required="True">
+    </div>
+    <div class="mb-3">
+        <label for="openingBalance" class="form-label">Opening Balance</label>
+        <input type="input" class="form-control h-25" name="openingBalance" required="True">
+      </div>
+    
+    <div class="mb-3">
+        <label for="closingBalance" class="form-label">Closing Balance</label>
+        <input type="input" class="form-control h-25" name="closingBalance" required="True">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+{% endblock %}
