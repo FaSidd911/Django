@@ -22,6 +22,7 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.index),
+
     path('login', views.login_request,name='login'),
     path('index', views.index),
     path('about', views.about),
@@ -29,5 +30,9 @@ urlpatterns = [
     path("addSociety", views.addSociety),
     path('society/<str:item_name>/',views.societyMembers, name='item'),
     path('society/<str:item_name>/societyMembers',views.societyMembers, name='item'),
-    re_path(r"[^;]*logout", LogoutView.as_view(), name="logout")
+    re_path(r"[^;]*logout", LogoutView.as_view(), name="logout"),
+    path('services',views.services),
+   
+
+
 ]
