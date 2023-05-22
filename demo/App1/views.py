@@ -48,9 +48,6 @@ def login(request):
 # def login(request):
 #     return render(request,'login.html')
 
-def contact(request):
-    return 0
-
 @login_required
 def addSociety(request):
     if request.method == "POST":
